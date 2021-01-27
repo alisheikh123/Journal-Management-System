@@ -1,0 +1,370 @@
+﻿@model WebApplication9.Models.tblJournal
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script type="text/javascript">
+
+
+    var app = angular.module('jouapp', [])
+    app.controller('jourCtrl', function ($scope, $http, $window) {
+
+
+
+        $scope.submitClick = function () {
+
+
+            var post = $http({
+                method: "POST",
+                url: "/Home/Edit?" + id,
+                dataType: 'json',
+                data: { obj: $scope.user },
+                headers: { "Content-Type": "application/json" }
+            });
+
+            post.success(function (data, status) {
+                $("#exampleModal").toggle();
+                location.reload();
+            });
+
+            post.error(function (data, status) {
+                $window.alert(data.Message);
+            });
+        }
+    });
+</script>
+<div ng-controller="jourCtrl" class="container-fluid">
+    <div class="card card-outline card-success">
+        <div class="card-header card-green"><h2 style="text-align:center">Edit Journal</h2></div>
+        <div class="card-body">
+            <form>
+                <div class="form-horizontal">
+
+                    <div class="row col-md-12">
+                        <div class="form-group">
+                            <input type="submit" value="update" class="btn btn-success btn-sm fa fa-trash" onclick="update()" />
+                        </div>
+
+                    </div>
+
+                    @* 1st Row *@
+
+                    <div class="row col-md-12">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                                <select ng-model="user.category" name="Category" class="form-control" id="category" required>
+                                    <option value="">--Select Journal Category--</option>
+                                    <option value="X">X</option>
+                                    <option value="W">W</option>
+                                    <option value="Y">Y</option>
+
+                                </select>
+
+                                <input type="hidden" ng-model="cust.id" />
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Title</label>
+                                @Html.TextBox("Title", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">No of Authors</label>
+                                @Html.DropDownList("Author", new List<SelectListItem>
+                                   { new SelectListItem{Text="1", Value="1"},
+                                     new SelectListItem{Text="2", Value="2"},
+                                      new SelectListItem{Text="3", Value="3"},
+                                       new SelectListItem{Text="4", Value="4"},
+                                        new SelectListItem{Text="5", Value="5"},
+                                         new SelectListItem{Text="6", Value="6"},
+                                        },
+                             "Please select Author",htmlAttributes: new { @class="form-control",@id = "noofauthor" })
+                                @*<select ng-model="user.noofauthor" name="noofauthor" class="form-control" id="noofauthor" required>
+                                    <option value="">--Select No of Authors--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+
+                                </select>*@
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    @* 2nd Row *@
+                    <div class="row col-md-12">
+
+                        <div class="col-md-4" id="authors1">
+                            <div class="form-group">
+                                <label class="control-label">First Author Name</label>
+                               
+                                @Html.TextBox("Author1", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4" id="authors2">
+                            <div class="form-group">
+                                <label class="control-label">Second Author Name</label>
+                                @Html.TextBox("Author2", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4" id="authors3">
+                            <div class="form-group">
+                                <label class="control-label">Third Author Name</label>
+                                @Html.TextBox("Author3", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                    @*4rd Row*@
+                    <div class="row col-md-12">
+                        <div class="col-md-4" id="authors4">
+                            <div class="form-group">
+                                <label class="control-label">Fourth Author Name</label>
+                                @Html.TextBox("Author4", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4" id="authors5">
+                            <div class="form-group">
+                                <label class="control-label">Fifth Author Name</label>
+                                @Html.TextBox("Author5", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4" id="authors6">
+                            <div class="form-group">
+                                <label class="control-label">Sixth Author Name</label>
+                                @Html.TextBox("Author6", "", "", htmlAttributes: new { @class = "form-control" })
+
+                            </div>
+
+                        </div>
+                    </div>
+                    @*5th Row*@
+                    <div class="row col-md-12">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Journal Name</label>
+                                
+                                @Html.TextBox("JournalNm", "", "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Issue No</label>
+                               
+                                @Html.TextBox("IssueNo", "", "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Volume No</label>
+                              
+                                @Html.TextBox("volumeno", "", "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    @*7th Row*@
+                    <div class="row col-md-12">
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Start Page</label>
+                               
+                                @Html.TextBox("SPage", "", "", htmlAttributes: new { @class = "form-control" ,id="spage"})
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">End Page</label>
+                               
+                                @Html.TextBox("EPage", "", "", htmlAttributes: new { @class = "form-control" ,id="epage"})
+                            </div>
+
+                        </div>
+                        @**@
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Total Pages</label>
+                               
+                                @Html.TextBox("TPage", "", "", htmlAttributes: new { @class = "form-control" ,disabled="disabled",id="tpage"})
+                            </div>
+                        </div>
+                    </div>
+                    @*8rth Row*@
+                    <div class="row col-md-12">
+
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Publication Name</label>
+                               
+                                @Html.TextBox("pubName", "", "", htmlAttributes: new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Country</label>
+                                @Html.DropDownList("CountryList", (IEnumerable
+                                  <SelectListItem>)ViewBag.CountryList, "--Select Country--", new { @class = "form-control", data_ng_model = "user.Country" })
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">Publication Date</label>
+                               
+                                @Html.TextBox("pubdate","",new { @class = "form-control datepicker",@type="date" })
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+
+        //Get IDs
+        var author1 = $("#authors1");
+        var author2 = $("#authors2");
+        var author3 = $("#authors3");
+        var author4 = $("#authors4");
+        var author5 = $("#authors5");
+        var author6 = $("#authors6");
+
+        //CSS Code
+        author1.css("display", "none");
+        author2.css("display", "none");
+        author3.css("display", "none");
+        author4.css("display", "none");
+        author5.css("display", "none");
+        author6.css("display", "none");
+
+
+
+        $('#noofauthor').change(function () {
+
+
+            if ($(this).val() == "1") {
+                author1.show();
+                author2.hide();
+                author3.hide();
+                author4.hide();
+                author5.hide();
+                author6.hide();
+
+            }
+            else if ($(this).val() == "2") {
+                author1.show();
+                author2.show();
+                author3.hide();
+                author4.hide();
+                author5.hide();
+                author6.hide();
+            }
+            else if ($(this).val() == "3") {
+                author1.show();
+                author2.show();
+                author3.show();
+                author4.hide();
+                author5.hide();
+                author6.hide();
+            }
+            else if ($(this).val() == "4") {
+                author1.show();
+                author2.show();
+                author3.show();
+                author4.show();
+                author5.hide();
+                author6.hide();
+            }
+            else if ($(this).val() == "5") {
+
+                author1.show();
+                author2.show();
+                author3.show();
+                author4.show();
+                author5.show();
+                author6.hide();
+            }
+            else if ($(this).val() == "6") {
+
+                author1.show();
+                author2.show();
+                author3.show();
+                author4.show();
+                author5.show();
+                author6.show();
+            }
+            else {
+
+                author1.hide();
+                author2.hide();
+                author3.hide();
+                author4.hide();
+                author5.hide();
+                author6.hide();
+
+            }
+
+        });
+    });
+
+
+    $('#spage , #epage').keyup(function () {
+        var StartPage = parseFloat($('#spage').val()) || 0;
+        var EndPage = parseFloat($('#epage').val()) || 0;
+        var totalPages = EndPage - StartPage;
+
+        $('#tpage').val(totalPages);
+
+
+    });
+
+    $(function () {
+        $(".datepicker").datepicker();
+    });
+
+</script>

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<WebApplication9.Models.tblJournal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Noofauthor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.issueno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.journalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.volumeno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SPage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EPage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.totalPage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pubName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Impact_Factor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pubDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Noofauthor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.issueno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.journalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.volumeno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SPage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EPage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.totalPage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pubName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Impact_Factor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pubDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

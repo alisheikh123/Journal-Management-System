@@ -1,0 +1,176 @@
+﻿@model WebApplication9.Models.tblJournal
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblJournal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Noofauthor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Noofauthor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.issueno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.issueno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.journalName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.journalName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.volumeno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.volumeno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totalPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totalPage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pubName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pubName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Impact_Factor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Impact_Factor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pubDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pubDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
