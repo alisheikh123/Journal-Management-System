@@ -2,15 +2,19 @@
 @{
     ViewBag.Title = "Create";
 }
-
+<style>
+    .fa-check-circle {
+         color:green;
+    }
+</style>
 <script type="text/javascript">
 
 
     var app = angular.module('jouapp', [])
     app.controller('jourCtrl', function ($scope, $http, $window) {
-       
 
-     
+
+
         $scope.submitClick = function () {
 
 
@@ -23,8 +27,11 @@
             });
 
             post.success(function (data, status) {
-                $("#exampleModal").toggle();
-                location.reload();
+
+                $('.exampleModal').modal('show');
+
+
+                return false;
             });
 
             post.error(function (data, status) {
@@ -33,26 +40,49 @@
         }
     });
 </script>
-@* Modal *@
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@*Success Modal *@
+<div>
+    <div class="modal fade exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-check-circle"> Success</i></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Your Record is Saved Successfully
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary close" data-dismiss="modal">Ok</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Delete Modal *@
+<div class="modal fade deleteModal"  tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="deleteModalLabel"><i class="fa fa-crosshairs">Alert</i></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Record is Saved
+                Your Record Successfully Deleted!
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" id="delclose" data-dismiss="modal">Close</button>
+
             </div>
         </div>
     </div>
 </div>
+@*Delete Modal *@
 
 <div ng-controller="jourCtrl" class="container-fluid">
     <div class="card card-outline card-success">
@@ -70,214 +100,215 @@
 
                         <div class="row col-md-12">
                             <div class="form-group">
-                                <input type="submit" value="save" class="btn btn-success btn-sm fa fa-trash" ng-click="submitClick()" />
+                                <button type="submit" class="btn btn-success btn-sm fa fa-floppy-o" ng-click="submitClick()">Save</button>
+                                @*<input type="submit" value="save" class="btn btn-success btn-sm" ng-click="submitClick()" />*@
                             </div>
-                        
+
                         </div>
 
                         @* 1st Row *@
 
-                    <div class="row col-md-12">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Category</label>
-                                <select ng-model="user.category" name="Category" class="form-control" id="category" required>
-                                    <option value="">--Select Journal Category--</option>
-                                    <option value="X">X</option>
-                                    <option value="W">W</option>
-                                    <option value="Y">Y</option>
+                        <div class="row col-md-12">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Category</label>
+                                    <select ng-model="user.category" name="Category" class="form-control" id="category" required>
+                                        <option value="">--Select Journal Category--</option>
+                                        <option value="X">X</option>
+                                        <option value="W">W</option>
+                                        <option value="Y">Y</option>
 
-                                </select>
-                                <span ng-show="jform.category.$touched && jform.category.$invalid" class="text-danger"> * Please Select the Category</span>
-                                <input type="hidden" ng-model="cust.id" />
+                                    </select>
+                                    <span ng-show="jform.category.$touched && jform.category.$invalid" class="text-danger"> * Please Select the Category</span>
+                                    <input type="hidden" ng-model="cust.id" />
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Title</label>
+
+                                    <input ng-model="user.title" name="Title" class="form-control" required />
+                                    <span ng-show="jform.title.$touched || jform.title.$invalid ||jform.title.$error.require" class="text-danger"> * Please Select the Title</span>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">No of Authors</label>
+                                    <select ng-model="user.noofauthor" name="noofauthor" class="form-control" id="noofauthor" required>
+                                        <option value="">--Select No of Authors--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+
+                                    </select>
+                                    <span ng-show="jform.noofauthor.$touched && jform.noofauthor.$invalid" class="text-danger"> * Please Select the No of Autho</span>
+
+
+                                </div>
 
                             </div>
 
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Title</label>
-                              
-                             <input ng-model="user.title" name="Title" class="form-control" required />
-                                <span ng-show="jform.title.$touched || jform.title.$invalid ||jform.title.$error.require" class="text-danger"> * Please Select the Title</span>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">No of Authors</label>
-                                <select ng-model="user.noofauthor" name="noofauthor" class="form-control" id="noofauthor" required>
-                                    <option value="">--Select No of Authors--</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-
-                                </select>
-                                <span ng-show="jform.noofauthor.$touched && jform.noofauthor.$invalid" class="text-danger"> * Please Select the No of Autho</span>
-
-
-                            </div>
-
-                        </div>
-                       
-                    </div>
 
                         @* 2nd Row *@
-                    <div class="row col-md-12">
+                        <div class="row col-md-12">
 
-                        <div class="col-md-4" id="authors1">
-                            <div class="form-group">
-                                <label class="control-label">First Author Name</label>
-                                <input ng-model="user.Author1" name="Author" class="form-control" required />
-                                <span ng-show="jform.Author.$touched && jform.Author.$invalid" class="text-danger"> * Please Select the Author Name</span>
+                            <div class="col-md-4" id="authors1">
+                                <div class="form-group">
+                                    <label class="control-label">First Author Name</label>
+                                    <input ng-model="user.Author1" name="Author" class="form-control" required />
+                                    <span ng-show="jform.Author.$touched && jform.Author.$invalid" class="text-danger"> * Please Select the Author Name</span>
+                                </div>
+
                             </div>
+                            <div class="col-md-4" id="authors2">
+                                <div class="form-group">
+                                    <label class="control-label">Second Author Name</label>
+                                    <input ng-model="user.Author2" name="Author2" class="form-control" required />
+                                    <span ng-show="jform.Author2.$touched && jform.Author2.$invalid" class="text-danger"> * Please Select the Second Author Name</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4" id="authors2">
-                            <div class="form-group">
-                                <label class="control-label">Second Author Name</label>
-                                <input ng-model="user.Author2" name="Author2" class="form-control" required />
-                                <span ng-show="jform.Author2.$touched && jform.Author2.$invalid" class="text-danger"> * Please Select the Second Author Name</span>
                             </div>
+                            <div class="col-md-4" id="authors3">
+                                <div class="form-group">
+                                    <label class="control-label">Third Author Name</label>
+                                    <input ng-model="user.Author3" name="Author3" class="form-control" required />
+                                    <span ng-show="jform.Author3.$touched && jform.Author3.$invalid" class="text-danger"> * Please Select the Third Author Name</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4" id="authors3">
-                            <div class="form-group">
-                                <label class="control-label">Third Author Name</label>
-                                <input ng-model="user.Author3" name="Author3" class="form-control" required />
-                                <span ng-show="jform.Author3.$touched && jform.Author3.$invalid" class="text-danger"> * Please Select the Third Author Name</span>
                             </div>
-
                         </div>
-                    </div>
 
 
-                      
+
 
                         @*4rd Row*@
-                    <div class="row col-md-12">
-                        <div class="col-md-4" id="authors4">
-                            <div class="form-group">
-                                <label class="control-label">Fourth Author Name</label>
-                                <input ng-model="user.Author4" name="Author4" class="form-control" required />
-                                <span ng-show="jform.Author4.$touched && jform.Author4.$invalid" class="text-danger"> * Please Select the Fourth Author Name</span>
-                            </div>
+                        <div class="row col-md-12">
+                            <div class="col-md-4" id="authors4">
+                                <div class="form-group">
+                                    <label class="control-label">Fourth Author Name</label>
+                                    <input ng-model="user.Author4" name="Author4" class="form-control" required />
+                                    <span ng-show="jform.Author4.$touched && jform.Author4.$invalid" class="text-danger"> * Please Select the Fourth Author Name</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4" id="authors5">
-                            <div class="form-group">
-                                <label class="control-label">Fifth Author Name</label>
-                                <input ng-model="user.Author5" name="Author5" class="form-control" required />
-                                <span ng-show="jform.Author5.$touched && jform.Author5.$invalid" class="text-danger"> * Please Select the Fifth Author Name</span>
                             </div>
+                            <div class="col-md-4" id="authors5">
+                                <div class="form-group">
+                                    <label class="control-label">Fifth Author Name</label>
+                                    <input ng-model="user.Author5" name="Author5" class="form-control" required />
+                                    <span ng-show="jform.Author5.$touched && jform.Author5.$invalid" class="text-danger"> * Please Select the Fifth Author Name</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4" id="authors6">
-                            <div class="form-group">
-                                <label class="control-label">Sixth Author Name</label>
-                                <input ng-model="user.Author6" name="Author6" class="form-control" required />
-                                <span ng-show="jform.Author6.$touched && jform.Author6.$invalid" class="text-danger"> * Please Select the Sixth Author Name</span>
                             </div>
+                            <div class="col-md-4" id="authors6">
+                                <div class="form-group">
+                                    <label class="control-label">Sixth Author Name</label>
+                                    <input ng-model="user.Author6" name="Author6" class="form-control" required />
+                                    <span ng-show="jform.Author6.$touched && jform.Author6.$invalid" class="text-danger"> * Please Select the Sixth Author Name</span>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
                         @*5th Row*@
-                    <div class="row col-md-12">
+                        <div class="row col-md-12">
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Journal Name</label>
-                                <input ng-model="user.JournalNm" name="JournalNm" class="form-control" required />
-                                <span ng-show="jform.JournalNm.$touched && jform.JournalNm.$invalid" class="text-danger"> * Please Select the Journal Name</span>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Journal Name</label>
+                                    <input ng-model="user.JournalNm" name="JournalNm" class="form-control" required />
+                                    <span ng-show="jform.JournalNm.$touched && jform.JournalNm.$invalid" class="text-danger"> * Please Select the Journal Name</span>
+                                </div>
+
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Issue No</label>
+                                    <input ng-model="user.IssueNo" type="number" class="form-control" required />
+                                    <span ng-show="jform.IssueNo.$touched && jform.IssueNo.$invalid" class="text-danger"> * Please Select the IssueNo</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Issue No</label>
-                                <input ng-model="user.IssueNo" type="number" class="form-control" required />
-                                <span ng-show="jform.IssueNo.$touched && jform.IssueNo.$invalid" class="text-danger"> * Please Select the IssueNo</span>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Volume No</label>
+                                    <input ng-model="user.volumeno" type="number" class="form-control" required />
+                                    <span ng-show="jform.volumeno.$touched && jform.volumeno.$invalid" class="text-danger"> * Please Select the Volume No</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Volume No</label>
-                                <input ng-model="user.volumeno" type="number" class="form-control" required />
-                                <span ng-show="jform.volumeno.$touched && jform.volumeno.$invalid" class="text-danger"> * Please Select the Volume No</span>
                             </div>
-
                         </div>
-                    </div>
 
-                    
+
                         @*7th Row*@
-                    <div class="row col-md-12">
+                        <div class="row col-md-12">
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Start Page</label>
-                                <input ng-model="user.SPage" type="number" class="form-control" id="spage" required />
-                                <span ng-show="jform.SPage.$touched && jform.SPage.$invalid" class="text-danger"> * Please Select the Start Page</span>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">End Page</label>
-                                <input ng-model="user.EPage" class="form-control" id="epage" required />
-                                <span ng-show="jform.EPage.$touched && jform.EPage.$invalid" class="text-danger"> * Please Select the End Page</span>
-                            </div>
-
-                        </div>
-                        @**@
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Total Pages</label>
-                                <input ng-model="user.TPage"  class="form-control" id="totpage" disabled />
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Start Page</label>
+                                    <input ng-model="user.SPage" type="number" class="form-control" id="spage" required />
+                                    <span ng-show="jform.SPage.$touched && jform.SPage.$invalid" class="text-danger"> * Please Select the Start Page</span>
+                                </div>
 
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">End Page</label>
+                                    <input ng-model="user.EPage" class="form-control" id="epage" required />
+                                    <span ng-show="jform.EPage.$touched && jform.EPage.$invalid" class="text-danger"> * Please Select the End Page</span>
+                                </div>
+
+                            </div>
+                            @**@
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Total Pages</label>
+                                    <input ng-model="user.TPage" class="form-control" id="totpage" disabled />
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
                         @*8rth Row*@
-                    <div class="row col-md-12">
+                        <div class="row col-md-12">
 
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Publication Name</label>
-                                <input ng-model="user.pubName" class="form-control" required />
-                                <span ng-show="jform.pubName.$touched && jform.pubName.$invalid" class="text-danger"> * Please Select the Publication Name</span>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Publication Name</label>
+                                    <input ng-model="user.pubName" class="form-control" required />
+                                    <span ng-show="jform.pubName.$touched && jform.pubName.$invalid" class="text-danger"> * Please Select the Publication Name</span>
+                                </div>
+
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Country</label>
+                                    @Html.DropDownList("CountryList", (IEnumerable
+                                      <SelectListItem>)ViewBag.CountryList, "--Select Country--", new { @class = "form-control", data_ng_model = "user.Country" })
 
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Country</label>
-                                @Html.DropDownList("CountryList", (IEnumerable
-                                  <SelectListItem>)ViewBag.CountryList, "--Select Country--", new { @class = "form-control", data_ng_model = "user.Country" })
+                                    <span ng-show="jform.Country.$touched && jform.Country.$invalid" class="text-danger"> * Please Select the Country</span>
+                                </div>
 
-                                <span ng-show="jform.Country.$touched && jform.Country.$invalid" class="text-danger"> * Please Select the Country</span>
                             </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Publication Date</label>
+                                    <input ng-model="user.PubDate" class="form-control" type="date" required />
+                                    <span ng-show="jform.PubDate.$touched && jform.PubDate.$invalid" class="text-danger"> * Please Select the Publication Date</span>
+                                </div>
 
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label class="control-label">Publication Date</label>
-                                <input ng-model="user.PubDate" class="form-control" type="date" required />
-                                <span ng-show="jform.PubDate.$touched && jform.PubDate.$invalid" class="text-danger"> * Please Select the Publication Date</span>
                             </div>
-
                         </div>
-                    </div>
-                          
 
 
 
-</form>
+
+                    </form>
                 </div>
             </div>
 
@@ -287,74 +318,74 @@
 </div>
 @* List *@
 @*<div class="container">*@
-    <table id="example" ng-model="example" class="table table-striped table-bordered " style="width:100%">
-        <thead>
-            <tr>
+<table id="example" ng-model="example" class="table table-striped table-bordered " style="width:100%">
+    <thead>
+        <tr>
 
-                <th>Category</th>
-                <th>Title</th>
-                <th>No of Authors</th>
-                <th>First Author Name</th>
-             
-              
-                <th>Journal Name</th>
-                <th>Issuance No</th>
-                <th>Volumn No</th>
-                <th>Total Page</th>
-                <th>Publisher Name</th>
-
-                <th>Country</th>
-                <th>Publication Date</th>
-
-                <th>Action</th>
-            </tr>
-        </thead>
+            <th>Category</th>
+            <th>Title</th>
+            <th>No of Authors</th>
+            <th>First Author Name</th>
 
 
-       
-            @foreach (var item in Model)
-            {
+            <th>Journal Name</th>
+            <th>Issuance No</th>
+            <th>Volumn No</th>
+            <th>Total Page</th>
+            <th>Publisher Name</th>
 
-                <tr>
-                    <td>
-                        @Html.DisplayFor(Item => item.Category)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(Item => item.title)
+            <th>Country</th>
+            <th>Publication Date</th>
 
-                    </td>
-                    <td>
-                        @Html.DisplayFor(Item => item.Noofauthor)
+            <th>Action</th>
+        </tr>
+    </thead>
 
-                    </td>
-                    <td>@Html.DisplayFor(Item => item.author1)</td>
-                  
-                  
 
-                    <td>@Html.DisplayFor(Item => item.journalName)</td>
-                    <td>@Html.DisplayFor(Item => item.issueno)</td>
-                    <td>@Html.DisplayFor(Item => item.volumeno)</td>
-                    <td>@Html.DisplayFor(Item => item.totalPage)</td>
-                    <td>@Html.DisplayFor(Item => item.pubName)</td>
 
-                    <td>@Html.DisplayFor(Item => item.Country)</td>
-                    <td>@Html.DisplayFor(Item => item.pubDate)</td>
-                    <td>
-                        
-                        @Html.ActionLink(" ", "Edit", new { Id = item.Id }, new { @class = "btn btn-primary btn-sm fa fa-pencil" ,id = item.Id, onClick = "edit(this.id)" })
+    @foreach (var item in Model)
+    {
 
-                        @Html.ActionLink(" ", "Create", new { Id = item.Id }, new { @class = "btn btn-danger btn-sm fa fa-trash ", id = item.Id, onClick = "deletes(this.id)" })
+        <tr>
+            <td>
+                @Html.DisplayFor(Item => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.title)
 
-                      @*  @Html.ActionLink("Detail", "Detail", new { Id = item.Id }, new { @class = "btn btn-warning btn-sm" })*@
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.Noofauthor)
 
-                    </td>
+            </td>
+            <td>@Html.DisplayFor(Item => item.author1)</td>
 
-                </tr>
 
-            }
-     
 
-    </table>
+            <td>@Html.DisplayFor(Item => item.journalName)</td>
+            <td>@Html.DisplayFor(Item => item.issueno)</td>
+            <td>@Html.DisplayFor(Item => item.volumeno)</td>
+            <td>@Html.DisplayFor(Item => item.totalPage)</td>
+            <td>@Html.DisplayFor(Item => item.pubName)</td>
+
+            <td>@Html.DisplayFor(Item => item.Country)</td>
+            <td>@Html.DisplayFor(Item => item.pubDate)</td>
+            <td>
+
+                @Html.ActionLink(" ", "Edit", new { Id = item.Id }, new { @class = "btn btn-primary btn-sm fa fa-pencil", id = item.Id, onClick = "edit(this.id)" })
+
+                @Html.ActionLink(" ", "Create", new { Id = item.Id }, new { @class = "btn btn-danger btn-sm fa fa-trash ", id = item.Id, onClick = "deletes(this.id)" })
+
+                @*  @Html.ActionLink("Detail", "Detail", new { Id = item.Id }, new { @class = "btn btn-warning btn-sm" })*@
+
+            </td>
+
+        </tr>
+
+    }
+
+
+</table>
 @*</div>*@
 <script type="text/javascript">
 
@@ -451,22 +482,22 @@
         var StartPage = parseFloat($('#spage').val()) || 0;
         var EndPage = parseFloat($('#epage').val()) || 0;
         var totalPages = EndPage - StartPage;
-        
+
         $('#totpage').val(totalPages);
-        
+
 
     });
     function edit(Id) {
-            $.ajax({
-                type: "GET",
-                url: "/Home/Edit/?" + Id,
-                dataType: "json",
-                data: { Id: Id },
-                success: (function (res) { alert("d" + result); }),
-                error: (function () { alert("Error") })
+        $.ajax({
+            type: "GET",
+            url: "/Home/Edit/?" + Id,
+            dataType: "json",
+            data: { Id: Id },
+            success: (function (res) { alert("d" + result); }),
+            error: (function () { alert("Error") })
 
-            });
-        }
+        });
+    }
     function deletes(Id) {
         $.ajax({
             type: "POST",
@@ -474,10 +505,12 @@
             dataType: "json",
             data: { Id: Id },
             success: (function (res) {
-                alert("d"+result);
-                location.reload();
-                
-                
+
+                $('.deleteModal').modal('show');
+
+                return false;
+
+
 
             }),
             error: (function () { alert("Error") })
@@ -485,4 +518,12 @@
         });
 
     }
+    $('.close').click(function () {
+        location.reload();
+    });
+    //Delete Alert Close and Refresh
+    $('#delclose').click(function () {
+        location.reload();
+    });
+
 </script>

@@ -22,9 +22,9 @@
                 headers: { "Content-Type": "application/json" }
             });
 
-            post.success(function (data, status) {
                 $("#exampleModal").toggle();
                 location.reload();
+            post.success(function (data, status) {
             });
 
             post.error(function (data, status) {
@@ -42,7 +42,7 @@
 
                     <div class="row col-md-12">
                         <div class="form-group">
-                            <input type="submit" value="update" class="btn btn-success btn-sm fa fa-trash" onclick="update()" />
+                            <input type="submit" value="update" class="btn btn-success btn-sm fa fa-trash" id="update" />
                         </div>
 
                     </div>
@@ -53,13 +53,14 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
-                                <select ng-model="user.category" name="Category" class="form-control" id="category" required>
-                                    <option value="">--Select Journal Category--</option>
-                                    <option value="X">X</option>
-                                    <option value="W">W</option>
-                                    <option value="Y">Y</option>
-
-                                </select>
+                                @Html.DropDownList("category", new List<SelectListItem>
+                                 { new SelectListItem{Text="X", Value="X"},
+                                   new SelectListItem{Text="W", Value="W"},
+                                    new SelectListItem{Text="Y", Value="Y"},
+                                     
+                                      },
+                           "--Select Journal Category--", htmlAttributes: new { @class = "form-control", id="category"})
+                            
 
                                 <input type="hidden" ng-model="cust.id" />
 
@@ -69,8 +70,9 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Title</label>
-                                @Html.TextBox("Title", "", "", htmlAttributes: new { @class = "form-control" })
-
+                                @Html.TextBox("title", ViewData["title"], htmlAttributes: new { @class = "form-control", id = "title" })
+                                @Html.TextBox("Id", ViewData["title"], htmlAttributes: new { @class = "form-control", id = "Ids", type = "Hidden" })
+                                @Html.TextBox("ImpactFactor", ViewData["ImpactFactor"], htmlAttributes: new { @class = "form-control", id = "ImpactFactor", type = "Hidden" })
                             </div>
 
                         </div>
@@ -85,17 +87,8 @@
                                         new SelectListItem{Text="5", Value="5"},
                                          new SelectListItem{Text="6", Value="6"},
                                         },
-                             "Please select Author",htmlAttributes: new { @class="form-control",@id = "noofauthor" })
-                                @*<select ng-model="user.noofauthor" name="noofauthor" class="form-control" id="noofauthor" required>
-                                    <option value="">--Select No of Authors--</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-
-                                </select>*@
+                             "Please select Author", htmlAttributes: new { @class="form-control",@id = "noofauthor" })
+                    
 
 
 
@@ -112,7 +105,7 @@
                             <div class="form-group">
                                 <label class="control-label">First Author Name</label>
                                
-                                @Html.TextBox("Author1", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("Author1", ViewData["author1"], htmlAttributes: new { @class = "form-control",id= "Author1" })
 
                             </div>
 
@@ -120,7 +113,7 @@
                         <div class="col-md-4" id="authors2">
                             <div class="form-group">
                                 <label class="control-label">Second Author Name</label>
-                                @Html.TextBox("Author2", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("Author2", ViewData["author2"], htmlAttributes: new { @class = "form-control",id= "Author2" })
 
                             </div>
 
@@ -128,7 +121,7 @@
                         <div class="col-md-4" id="authors3">
                             <div class="form-group">
                                 <label class="control-label">Third Author Name</label>
-                                @Html.TextBox("Author3", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("Author3", ViewData["author3"], htmlAttributes: new { @class = "form-control" ,id= "Author3" })
 
                             </div>
 
@@ -143,7 +136,7 @@
                         <div class="col-md-4" id="authors4">
                             <div class="form-group">
                                 <label class="control-label">Fourth Author Name</label>
-                                @Html.TextBox("Author4", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("Author4", ViewData["author4"], htmlAttributes: new { @class = "form-control", id="Author4" })
 
                             </div>
 
@@ -151,7 +144,7 @@
                         <div class="col-md-4" id="authors5">
                             <div class="form-group">
                                 <label class="control-label">Fifth Author Name</label>
-                                @Html.TextBox("Author5", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("Author5", ViewData["author5"], htmlAttributes: new { @class = "form-control" ,id= "Author5" })
 
                             </div>
 
@@ -159,7 +152,7 @@
                         <div class="col-md-4" id="authors6">
                             <div class="form-group">
                                 <label class="control-label">Sixth Author Name</label>
-                                @Html.TextBox("Author6", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("Author6", ViewData["author6"], htmlAttributes: new { @class = "form-control",id= "Author6" })
 
                             </div>
 
@@ -172,7 +165,7 @@
                             <div class="form-group">
                                 <label class="control-label">Journal Name</label>
                                 
-                                @Html.TextBox("JournalNm", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("JournalNm", ViewData["journalName"], htmlAttributes: new { @class = "form-control",id= "JournalNm" })
                             </div>
 
                         </div>
@@ -180,7 +173,7 @@
                             <div class="form-group">
                                 <label class="control-label">Issue No</label>
                                
-                                @Html.TextBox("IssueNo", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("IssueNo", ViewData["issueno"], htmlAttributes: new { @class = "form-control" ,id= "IssueNo" })
                             </div>
 
                         </div>
@@ -188,7 +181,7 @@
                             <div class="form-group">
                                 <label class="control-label">Volume No</label>
                               
-                                @Html.TextBox("volumeno", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("volumeno",ViewData["volumeno"], htmlAttributes: new { @class = "form-control" ,id= "volumeno" })
                             </div>
 
                         </div>
@@ -202,7 +195,7 @@
                             <div class="form-group">
                                 <label class="control-label">Start Page</label>
                                
-                                @Html.TextBox("SPage", "", "", htmlAttributes: new { @class = "form-control" ,id="spage"})
+                                @Html.TextBox("SPage", ViewData["SPage"], htmlAttributes: new { @class = "form-control" ,id="spage"})
                             </div>
 
                         </div>
@@ -210,7 +203,7 @@
                             <div class="form-group">
                                 <label class="control-label">End Page</label>
                                
-                                @Html.TextBox("EPage", "", "", htmlAttributes: new { @class = "form-control" ,id="epage"})
+                                @Html.TextBox("EPage", ViewData["EPage"], htmlAttributes: new { @class = "form-control" ,id="epage"})
                             </div>
 
                         </div>
@@ -219,7 +212,7 @@
                             <div class="form-group">
                                 <label class="control-label">Total Pages</label>
                                
-                                @Html.TextBox("TPage", "", "", htmlAttributes: new { @class = "form-control" ,disabled="disabled",id="tpage"})
+                                @Html.TextBox("TPage", ViewData["totalPage"], htmlAttributes: new { @class = "form-control" ,disabled="disabled",id="tpage"})
                             </div>
                         </div>
                     </div>
@@ -231,17 +224,16 @@
                             <div class="form-group">
                                 <label class="control-label">Publication Name</label>
                                
-                                @Html.TextBox("pubName", "", "", htmlAttributes: new { @class = "form-control" })
+                                @Html.TextBox("pubName", ViewData["pubName"], htmlAttributes: new { @class = "form-control" ,id= "pubName" })
                             </div>
 
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="control-label">Country</label>
-                                @Html.DropDownList("CountryList", (IEnumerable
-                                  <SelectListItem>)ViewBag.CountryList, "--Select Country--", new { @class = "form-control", data_ng_model = "user.Country" })
-
-
+                                @* @Html.DropDownList("CountryList", new List<string>ViewData["Country"]), "id", "Name"))*@
+                                @Html.TextBox("CountryList", ViewData["Country"], htmlAttributes: new { @class = "form-control", id = "country" })
+                               @* @Html.DropDownList("CountryList", ((List<string>)ViewBag.Country).Select(m => new SelectListItem { Text = m.ToString(), Value = m }))*@
                             </div>
 
                         </div>
@@ -249,7 +241,7 @@
                             <div class="form-group">
                                 <label class="control-label">Publication Date</label>
                                
-                                @Html.TextBox("pubdate","",new { @class = "form-control datepicker",@type="date" })
+                                @Html.TextBox("pubdate", ViewData["pubDate"], new { @class = "form-control",@type="date",id= "pubdate" })
                             </div>
 
                         </div>
@@ -263,6 +255,9 @@
     </div>
 </div>
 <script>
+
+
+
     $(document).ready(function () {
         $('#example').DataTable();
 
@@ -352,7 +347,7 @@
         });
     });
 
-
+    ///Total page Count Logic
     $('#spage , #epage').keyup(function () {
         var StartPage = parseFloat($('#spage').val()) || 0;
         var EndPage = parseFloat($('#epage').val()) || 0;
@@ -363,8 +358,46 @@
 
     });
 
-    $(function () {
-        $(".datepicker").datepicker();
+    $("#update").click(function () {
+        var formdata = new FormData();
+        formdata.append("Id", $("#Ids").val())
+        formdata.append("category", $("#category").val());
+        formdata.append("title", $("#title").val());
+        formdata.append("ImpactFactor", $("#ImpactFactor").val());
+        formdata.append("Author", $("#noofauthor").val());
+        formdata.append("Author1", $("#Author1").val());
+        formdata.append("Author2", $("#Author2").val());
+        formdata.append("Author3", $("#Author3").val());
+        formdata.append("Author4", $("#Author4").val());
+        formdata.append("Author5", $("#Author5").val());
+        formdata.append("Author6", $("#Author6").val());
+        formdata.append("JournalNm", $("#JournalNm").val());
+        formdata.append("IssueNo", $("#IssueNo").val());
+        formdata.append("volumeno", $("#volumeno").val());
+        formdata.append("SPage", $("#spage").val());
+        formdata.append("EPage", $("#epage").val());
+        formdata.append("TPage", $("#tpage").val());
+        formdata.append("pubName", $("#pubName").val());
+        formdata.append("CountryList", $("#CountryList").val());        
+        formdata.append("pubdate", $("#pubdate").val());
+        console.log("FormData:" + formdata.get("category"))
+        $.ajax({
+            method: 'POST',
+            url: '/Home/Edit/',
+            data: JSON.stringify(formdata),
+            dataType: 'JSON',
+            success: function () {
+                alert("Hy")
+            },
+            error: function () { }
+
+        });
+
+
+
+
     });
+
+
 
 </script>

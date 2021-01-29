@@ -91,7 +91,7 @@ namespace WebApplication9.Controllers
 
             db.tblJournals.Remove(tblJournal);
             db.SaveChanges();
-            return Json("Your Record Successfully Removed", JsonRequestBehavior.AllowGet);
+            return Json(tblJournal);
         }
 
 
@@ -119,21 +119,45 @@ namespace WebApplication9.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
+            ViewData["Category"] = JObj.Category;
+            ViewData["title"] = JObj.title;
+            ViewData["ImpactFactor"] = JObj.Impact_Factor;
+            ViewData["Noofauthor"] = JObj.Noofauthor;
+            ViewData["author1"] = JObj.author1;
+            ViewData["author2"] = JObj.author2;
+            ViewData["author3"] = JObj.author3;
+            ViewData["author4"] = JObj.author4;
+            ViewData["author5"] = JObj.author5;
+            ViewData["author6"] = JObj.author6;
+            ViewData["volumeno"] = JObj.volumeno;
+            ViewData["journalName"] = JObj.journalName;
+            ViewData["issueno"] = JObj.issueno;
+            ViewData["pubName"] = JObj.pubName;
+            ViewData["pubDate"] = JObj.pubDate;
+            ViewData["SPage"] = JObj.SPage;
+            ViewData["EPage"] = JObj.EPage;
+            ViewData["totalPage"] = JObj.totalPage;
+            ViewData["Country"] = JObj.Country.ToString();
+            ViewData["Id"] = JObj.Id;
+
+
+
             return View(JObj);
         }
-
+        //[Bind(Include = "Id,Category,title,Noofauthor,author1,author2,author3,author4,author5,author6,issueno,journalName,volumeno,SPage,EPage,totalPage,pubName,Impact_Factor,Country,pubDate")]
+        //tblJournal obj
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Category,title,Noofauthor,author1,author2,author3,author4,author5,author6,issueno,journalName,volumeno,SPage,EPage,totalPage,pubName,Impact_Factor,Country,pubDate")] tblJournal obj)
+        public JsonResult Edit(JournalModel form)
         {
 
             if (ModelState.IsValid)
             {
-                db.Entry(obj).State = EntityState.Modified;
+                db.Entry(form).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Create");
+                
             }
 
-            return View(obj);
+            return Json("Result",JsonRequestBehavior.AllowGet);
         }
 
         private ActionResult HttpStatusCodeResult(HttpStatusCode badRequest)
