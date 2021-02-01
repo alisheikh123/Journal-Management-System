@@ -38,7 +38,6 @@ namespace WebApplication9.Controllers
             return View(db.tblJournals.ToList());
         }
 
-
         [HttpPost]
         public JsonResult Create(JournalModel obj)
         {
@@ -144,8 +143,7 @@ namespace WebApplication9.Controllers
 
             return View(JObj);
         }
-        //[Bind(Include = "Id,Category,title,Noofauthor,author1,author2,author3,author4,author5,author6,issueno,journalName,volumeno,SPage,EPage,totalPage,pubName,Impact_Factor,Country,pubDate")]
-        //tblJournal obj
+       
         [HttpPost]
         public JsonResult Edit(JournalModel form)
         {
@@ -165,12 +163,36 @@ namespace WebApplication9.Controllers
             throw new NotImplementedException();
         }
 
+        public ActionResult MsgOfOricDirector()
+        {
+            return View();
+        }
+
+        public ActionResult RoleOfOric() 
+        {
+
+            return View();
+        }
+
+        public ActionResult VisionandObject() { 
+            
+            
+            return View();
+        }
+        public ActionResult Team()
+        {
+
+
+            return View();
+        }
         public ActionResult About()
+        
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
+
 
         public ActionResult Contact()
         {
