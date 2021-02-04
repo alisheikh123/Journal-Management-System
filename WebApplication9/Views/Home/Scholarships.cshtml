@@ -1,0 +1,101 @@
+﻿@model IEnumerable<WebApplication9.Models.Class.AdmissionContext.scholarship>
+@{
+    ViewBag.Title = "Scholarships";
+}
+
+<h2 class="text-center">
+    <strong>Scholarships</strong>
+</h2>
+<div class="container">
+    <div class="soc_details_head" id="heading"></div>
+    <div class="info_body" style="overflow: auto;">
+        <div id="scholarship">
+            <div class="row col-md-12">
+                <div class="col-md-3">
+                    <img src="~/wwwroot/Image/oric/ORICLOGOFINAL.png" alt="ORIC" style="height: 130px; margin-left: 100px;" />
+                </div>
+                <div class="col-md-9">
+
+                    <h4 style="margin-top:50px;">
+                        <strong>
+                            Office of Research,<br />
+                            Innovation and
+
+                            Commercialization
+                        </strong>
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="container-fluid">
+
+                <div class="row col-md-12">
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+
+
+
+                        <table class="table table-responsive table-bordered display responsive nowrap" id="table_id">
+                            <thead>
+                                <tr class="label-primary">
+                                    <th style="width:100px">
+                                        Sr.No
+                                    </th>
+                                    <th>Title of Scholarships</th>
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        Value
+                                    </th>
+                                    <th>
+                                        Deadline
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.id)
+                                        </td>
+                                        <td>
+                                            <a href="@item.link">@Html.DisplayFor(modelItem => item.title)</a>
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.category)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.value)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.deadline)
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-1"></div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>

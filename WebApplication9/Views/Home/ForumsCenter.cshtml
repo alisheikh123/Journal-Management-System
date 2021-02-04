@@ -1,0 +1,59 @@
+﻿@model IEnumerable<WebApplication9.Models.Class.AdmissionContext.tblforumcenter>
+@{
+    ViewBag.Title = "ForumsCenter";
+}
+
+
+
+<div class="container">
+    <div class="soc_details_head" id="heading"></div>
+
+    <div class="info_body" style="overflow: auto;">
+        <div class="row">
+           
+        </div>
+        <div class="row col-md-12">
+
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h3 style="text-align:center;">Forums & Centres </h3>
+                <hr />
+                <table class="table table-responsive table-bordered display responsive nowrap" id="table_id">
+                    <thead>
+                        <tr class="label-primary" >
+                           
+
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Link
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                            
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.heading)
+
+                                </td>
+                                <td>
+                                    <a href="@item.upload_Image">@Html.DisplayFor(modelItem => item.Title)</a>
+
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        </div>
+    </div>

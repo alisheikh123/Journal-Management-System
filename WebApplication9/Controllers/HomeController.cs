@@ -9,17 +9,21 @@ using System.Web.Mvc;
 using WebApplication9.Data;
 using WebApplication9.Models;
 using WebApplication9.Models.Class;
+using WebApplication9.Models.Class.AdmissionContext;
+using WebApplication9.Models.Class.HRContext;
 
 namespace WebApplication9.Controllers
 {
     public class HomeController : Controller
     {
+        
         private WebApplication9Context db = new WebApplication9Context();
+        private AdmiissionContext dbs = new AdmiissionContext();
+        private HR_Context dbh = new HR_Context();
         public ActionResult Index()
         {
             return View();
         }
-
         public ActionResult Create()
         {
             List<string> countrylist = new List<string>();
@@ -37,7 +41,6 @@ namespace WebApplication9.Controllers
 
             return View(db.tblJournals.ToList());
         }
-
         [HttpPost]
         public JsonResult Create(JournalModel obj)
         {
@@ -74,7 +77,6 @@ namespace WebApplication9.Controllers
             }
             return Json("error", JsonRequestBehavior.AllowGet);
         }
-
         [HttpPost]
         public JsonResult Delete(int id)
         {
@@ -92,8 +94,6 @@ namespace WebApplication9.Controllers
             db.SaveChanges();
             return Json(tblJournal);
         }
-
-
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -142,8 +142,7 @@ namespace WebApplication9.Controllers
 
 
             return View(JObj);
-        }
-       
+        }       
         [HttpPost]
         public JsonResult Edit(JournalModel form)
         {
@@ -157,23 +156,20 @@ namespace WebApplication9.Controllers
 
             return Json("Result",JsonRequestBehavior.AllowGet);
         }
-
         private ActionResult HttpStatusCodeResult(HttpStatusCode badRequest)
         {
             throw new NotImplementedException();
         }
-
         public ActionResult MsgOfOricDirector()
         {
+           
             return View();
         }
-
         public ActionResult RoleOfOric() 
         {
 
             return View();
         }
-
         public ActionResult VisionandObject() { 
             
             
@@ -185,21 +181,84 @@ namespace WebApplication9.Controllers
 
             return View();
         }
-        public ActionResult About()
-        
+        public ActionResult Event()
+        {
+         
+            return View(dbs.tblOricEvents.ToList());
+        }
+        public ActionResult About()  
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
-
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+        public ActionResult MOUsigned() { return View(dbs.tblOricMous.ToList()); }
+        public ActionResult Seminar() { return View(); }
+        public ActionResult Worksop() { return View(); }
+        public ActionResult Research() { return View(); }
+        public ActionResult TravelGrants() { return View(); }
+        public ActionResult Projects() { return View(); }
+        public ActionResult FundingOpportunities() { return View(); }
+        public ActionResult Publications()
+        {
+            var AuthDetail = (from emp in dbh.HR_Employee
+        
+                             join r in dbh.HR_EmplyeeResearch on emp.Id equals r.Id
+                            
+                             select new
+                             {
+                                 r.Id,
+                                 r.Author,
+                                 r.Title,
+                                 r.ConferenceJournal,
+                                 r.PublicationYear,
+                                 r.PublicationName,
+                                 r.PublicationDescription
+                             }
+                           );
+
+            return View(dbh.HR_EmplyeeResearch.ToList());
+
+        }
+        [HttpPost]
+        public ActionResult Publications(int deptid) {
+            var pubDetail = (from emp in dbh.HR_Employee
+                             join sd in dbh.tblSubDepts on emp.DepartmentId equals sd.id
+                             join r in dbh.HR_EmplyeeResearch on emp.Id equals r.Id
+                             where sd.id==deptid select new { r.Id, r.Author, r.Title, 
+                                 r.ConferenceJournal, 
+                                 r.PublicationYear,
+                                 r.PublicationName,
+                                 r.PublicationDescription }
+                             );
+            
+            return View();
+        
+        }
+        public ActionResult Scholarships() { 
+                        
+            return View(dbs.scholarships.ToList()); }
+        public ActionResult ForumsCenter() 
+        {
+         
+
+
+            return View(dbs.tblforumcenters.ToList()); ;
+        }
+        public ActionResult Downloads() { return View(); }
+        public ActionResult BusinessIncubationCentre() { return View(); }
+
+
+
+
+
+
 
 
 

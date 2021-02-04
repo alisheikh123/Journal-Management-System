@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplication9.Models.Class.HRContext.HR_EmplyeeResearch>
+@{
+    ViewBag.Title = "Publications";
+}
+
+<h2>Publications</h2>
+
+<div class="container">
+
+    <div class="row col-md-12">
+
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <h3 style="text-align:center;">Publications </h3>
+            <hr />
+            <table class="table table-responsive table-bordered display responsive nowrap" id="table_id">
+                <thead>
+                    <tr class="label-primary">
+                        <th style="width:100px">
+                            Sr.No
+                        </th>
+                        <th>
+                            Author
+                        </th>
+                        <th>
+                            Conference Journal
+                        </th>
+                        <th>
+                            Publication Year
+                        </th>
+                        <th>
+                            Publication Name
+                        </th>
+                        <th>
+                            Publication Description
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ConferenceJournal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublicationYear)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublicationName)
+                        </td>
+                        <td >
+                            @Html.DisplayFor(modelItem => item.PublicationDescription)
+                        </td>
+                    </tr>
+                            }
+                        
+                    </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        var tab = $('#table_id').DataTable({
+            responsive: true
+        });
+    });
+</script>

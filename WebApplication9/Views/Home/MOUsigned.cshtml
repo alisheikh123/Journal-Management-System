@@ -1,0 +1,73 @@
+﻿@model IEnumerable<WebApplication9.Models.Class.AdmissionContext.tblOricMou>
+@{
+    ViewBag.Title = "MOUsigned";
+}
+<div class="container">
+    <div class="soc_details_head" id="heading"></div>
+    <div class="info_body" style="overflow: auto;">
+        <div id="Memorandum">
+            <h3 style="text-align:center">Memorandum signed by university of Sialkot </h3>
+            <hr />
+            <div class="text-center">
+                <h6>For the purpose of research alliances University of  Sialkot ties with different national and international institutes / universities. The description for these collaborations or memorandum are given as follows:</h6>
+                <br />
+                <h6>LIST of Memorandum of understanding (MoU)</h6>
+            </div>
+
+
+
+            <div class="container-fluid">
+
+                <div class="row col-md-12">
+
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        
+                      
+                     
+                        <table class="table table-responsive table-bordered display responsive nowrap" id="table_id">
+                            <thead>
+                                <tr class="label-primary">
+                                    <th style="width:100px">
+                                        Sr.No
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Memorandum of understanding (B/T)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MouDate)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MouDetail)
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-1"></div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
