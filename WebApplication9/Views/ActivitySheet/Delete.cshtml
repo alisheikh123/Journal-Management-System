@@ -1,0 +1,57 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblActivitySheet
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblActivitySheet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.activityDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activityDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activityHead)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activityHead)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activitySubHead)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activitySubHead)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activityDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activityDetail)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,43 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblOricCOVID
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblOricCOVID</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.covidHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.covidHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.covidDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.covidDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.covidImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.covidImagePath)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

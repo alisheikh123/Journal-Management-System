@@ -1,0 +1,27 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblOricResearchProjectsHead
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblOricResearchProjectsHead</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.projectHeadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.projectHeadName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

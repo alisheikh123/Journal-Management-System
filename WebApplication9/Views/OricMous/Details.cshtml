@@ -1,0 +1,35 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblOricMou
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblOricMou</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MouDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MouDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MouDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MouDetail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

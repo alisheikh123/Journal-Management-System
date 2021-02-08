@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication9.Models.Class.AdmissionContext.tblOricModalPopup>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.modalHeader)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modalDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modalImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.modalHeader)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modalDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modalImagePath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

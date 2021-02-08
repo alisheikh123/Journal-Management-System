@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication9.Models.Class.AdmissionContext.tblOricCOVID>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.covidHeader)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.covidDetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.covidImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.covidHeader)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.covidDetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.covidImagePath)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

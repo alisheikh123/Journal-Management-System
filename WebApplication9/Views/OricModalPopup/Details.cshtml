@@ -1,0 +1,43 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblOricModalPopup
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblOricModalPopup</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.modalHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modalHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modalDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modalDetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modalImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modalImagePath)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

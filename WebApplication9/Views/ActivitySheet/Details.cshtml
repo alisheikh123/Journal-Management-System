@@ -1,0 +1,51 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblActivitySheet
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblActivitySheet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.activityDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activityDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activityHead)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activityHead)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activitySubHead)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activitySubHead)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.activityDetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.activityDetail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

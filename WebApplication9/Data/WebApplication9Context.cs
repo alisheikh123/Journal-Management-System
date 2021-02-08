@@ -20,5 +20,33 @@ namespace WebApplication9.Data
         }
 
         public System.Data.Entity.DbSet<WebApplication9.Models.tblJournal> tblJournals { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblActivitySheet> tblActivitySheets { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblDetail> tblDetails { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblforumcenter> tblforumcenters { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricEvent> tblOricEvents { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricModalPopup> tblOricModalPopups { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricMou> tblOricMous { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricPublication> tblOricPublications { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.scholarship> scholarships { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.SliderImg> SliderImgs { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblFundAgency> tblFundAgencies { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblFundAgencyType> tblFundAgencyTypes { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricCOVID> tblOricCOVIDs { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricResearchProject> tblOricResearchProjects { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication9.Models.Class.AdmissionContext.tblOricResearchProjectsHead> tblOricResearchProjectsHeads { get; set; }
     }
 }

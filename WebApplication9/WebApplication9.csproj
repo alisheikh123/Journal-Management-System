@@ -127,7 +127,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ActivitySheetController.cs" />
+    <Compile Include="Controllers\DetailController.cs" />
+    <Compile Include="Controllers\forumcenterController.cs" />
+    <Compile Include="Controllers\FundAgenciesController.cs" />
+    <Compile Include="Controllers\FundAgencyTypeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OricCOVIDController.cs" />
+    <Compile Include="Controllers\OricEventsController.cs" />
+    <Compile Include="Controllers\OricModalPopupController.cs" />
+    <Compile Include="Controllers\OricMousController.cs" />
+    <Compile Include="Controllers\OricPublicationController.cs" />
+    <Compile Include="Controllers\OricResearchProjectsController.cs" />
+    <Compile Include="Controllers\OricResearchProjectsHeadController.cs" />
+    <Compile Include="Controllers\scholarshipController.cs" />
+    <Compile Include="Controllers\SliderImgsController.cs" />
     <Compile Include="Controllers\tblJournalsController.cs" />
     <Compile Include="Data\WebApplication9Context.cs" />
     <Compile Include="Global.asax.cs">
@@ -140,6 +154,14 @@
     <Compile Include="Migrations\202101210534109_changemodel.cs" />
     <Compile Include="Migrations\202101210534109_changemodel.designer.cs">
       <DependentUpon>202101210534109_changemodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102080550536_addcontroller.cs" />
+    <Compile Include="Migrations\202102080550536_addcontroller.Designer.cs">
+      <DependentUpon>202102080550536_addcontroller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102080627390_addcontroller1.cs" />
+    <Compile Include="Migrations\202102080627390_addcontroller1.Designer.cs">
+      <DependentUpon>202102080627390_addcontroller1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Class\AdmissionContext\abc.cs" />
@@ -766,6 +788,7 @@
     <Content Include="wwwroot\Image\oric\ORICLOGOFINAL.png" />
     <Content Include="wwwroot\Image\oric\oricdar.png" />
     <Content Include="wwwroot\Image\oric\oricjohn.png" />
+    <Content Include="wwwroot\Image\oric\ORICLOGOFINAL_100x100.png" />
     <Content Include="wwwroot\Image\oric\oricmustafa.png" />
     <Content Include="wwwroot\Image\oric\oricsaleem.png" />
     <Content Include="wwwroot\Image\oric\oricsheikh.png" />
@@ -1614,6 +1637,80 @@
     <Content Include="Views\Home\Downloads.cshtml" />
     <Content Include="Views\Home\BusinessIncubationCentre.cshtml" />
     <Content Include="Views\Home\Event.cshtml" />
+    <Content Include="Views\Shared\PartialView\_StylePartialView.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\PartialView\_HeaderWrapperAdmin.cshtml" />
+    <Content Include="Views\ActivitySheet\Create.cshtml" />
+    <Content Include="Views\ActivitySheet\Delete.cshtml" />
+    <Content Include="Views\ActivitySheet\Details.cshtml" />
+    <Content Include="Views\ActivitySheet\Edit.cshtml" />
+    <Content Include="Views\ActivitySheet\Index.cshtml" />
+    <Content Include="Views\Detail\Create.cshtml" />
+    <Content Include="Views\Detail\Delete.cshtml" />
+    <Content Include="Views\Detail\Details.cshtml" />
+    <Content Include="Views\Detail\Edit.cshtml" />
+    <Content Include="Views\Detail\Index.cshtml" />
+    <Content Include="Views\forumcenter\Create.cshtml" />
+    <Content Include="Views\forumcenter\Delete.cshtml" />
+    <Content Include="Views\forumcenter\Details.cshtml" />
+    <Content Include="Views\forumcenter\Edit.cshtml" />
+    <Content Include="Views\forumcenter\Index.cshtml" />
+    <Content Include="Views\OricEvents\Create.cshtml" />
+    <Content Include="Views\OricEvents\Delete.cshtml" />
+    <Content Include="Views\OricEvents\Details.cshtml" />
+    <Content Include="Views\OricEvents\Edit.cshtml" />
+    <Content Include="Views\OricEvents\Index.cshtml" />
+    <Content Include="Views\OricModalPopup\Create.cshtml" />
+    <Content Include="Views\OricModalPopup\Delete.cshtml" />
+    <Content Include="Views\OricModalPopup\Details.cshtml" />
+    <Content Include="Views\OricModalPopup\Edit.cshtml" />
+    <Content Include="Views\OricModalPopup\Index.cshtml" />
+    <Content Include="Views\OricMous\Create.cshtml" />
+    <Content Include="Views\OricMous\Delete.cshtml" />
+    <Content Include="Views\OricMous\Details.cshtml" />
+    <Content Include="Views\OricMous\Edit.cshtml" />
+    <Content Include="Views\OricMous\Index.cshtml" />
+    <Content Include="Views\OricPublication\Create.cshtml" />
+    <Content Include="Views\OricPublication\Delete.cshtml" />
+    <Content Include="Views\OricPublication\Details.cshtml" />
+    <Content Include="Views\OricPublication\Edit.cshtml" />
+    <Content Include="Views\OricPublication\Index.cshtml" />
+    <Content Include="Views\scholarship\Create.cshtml" />
+    <Content Include="Views\scholarship\Delete.cshtml" />
+    <Content Include="Views\scholarship\Details.cshtml" />
+    <Content Include="Views\scholarship\Edit.cshtml" />
+    <Content Include="Views\scholarship\Index.cshtml" />
+    <Content Include="Views\SliderImgs\Create.cshtml" />
+    <Content Include="Views\SliderImgs\Delete.cshtml" />
+    <Content Include="Views\SliderImgs\Details.cshtml" />
+    <Content Include="Views\SliderImgs\Edit.cshtml" />
+    <Content Include="Views\SliderImgs\Index.cshtml" />
+    <Content Include="Views\FundAgencies\Create.cshtml" />
+    <Content Include="Views\FundAgencies\Delete.cshtml" />
+    <Content Include="Views\FundAgencies\Details.cshtml" />
+    <Content Include="Views\FundAgencies\Edit.cshtml" />
+    <Content Include="Views\FundAgencies\Index.cshtml" />
+    <Content Include="Views\FundAgencyType\Create.cshtml" />
+    <Content Include="Views\FundAgencyType\Delete.cshtml" />
+    <Content Include="Views\FundAgencyType\Details.cshtml" />
+    <Content Include="Views\FundAgencyType\Edit.cshtml" />
+    <Content Include="Views\FundAgencyType\Index.cshtml" />
+    <Content Include="Views\OricCOVID\Create.cshtml" />
+    <Content Include="Views\OricCOVID\Delete.cshtml" />
+    <Content Include="Views\OricCOVID\Details.cshtml" />
+    <Content Include="Views\OricCOVID\Edit.cshtml" />
+    <Content Include="Views\OricCOVID\Index.cshtml" />
+    <Content Include="Views\OricResearchProjects\Create.cshtml" />
+    <Content Include="Views\OricResearchProjects\Delete.cshtml" />
+    <Content Include="Views\OricResearchProjects\Details.cshtml" />
+    <Content Include="Views\OricResearchProjects\Edit.cshtml" />
+    <Content Include="Views\OricResearchProjects\Index.cshtml" />
+    <Content Include="Views\OricResearchProjectsHead\Create.cshtml" />
+    <Content Include="Views\OricResearchProjectsHead\Delete.cshtml" />
+    <Content Include="Views\OricResearchProjectsHead\Details.cshtml" />
+    <Content Include="Views\OricResearchProjectsHead\Edit.cshtml" />
+    <Content Include="Views\OricResearchProjectsHead\Index.cshtml" />
+    <Content Include="Views\OricCOVID\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1629,6 +1726,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101210534109_changemodel.resx">
       <DependentUpon>202101210534109_changemodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102080550536_addcontroller.resx">
+      <DependentUpon>202102080550536_addcontroller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102080627390_addcontroller1.resx">
+      <DependentUpon>202102080627390_addcontroller1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

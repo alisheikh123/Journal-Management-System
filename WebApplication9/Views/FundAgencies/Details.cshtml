@@ -1,0 +1,67 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblFundAgency
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblFundAgency</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fundAgencyType_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fundAgencyType_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FundAgency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundAgency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fundAgency_Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fundAgency_Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

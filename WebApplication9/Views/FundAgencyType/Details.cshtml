@@ -1,0 +1,27 @@
+﻿@model WebApplication9.Models.Class.AdmissionContext.tblFundAgencyType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblFundAgencyType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FundAgencyType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundAgencyType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
